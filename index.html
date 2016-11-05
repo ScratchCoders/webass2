@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Digital Logic Design 101</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+
+
+    <style media="screen">
+      #question {
+        text-align: center;
+      }
+
+      #question h1 {
+        font-family: 'Indie Flower', cursive;
+        font-size: 50px;
+      }
+
+      .clear {
+        clear: both;
+      }
+      #question #qus {
+        font-family: 'Dosis', sans-serif;
+        font-size: 50px;
+      }
+      #answer {
+        padding-top: 30px;
+        font-size: 50px;
+        text-align:center;
+        font-family: 'Dosis', sans-serif;
+        text-indent: inherit;
+      }
+      #btn {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      #btn #submit {
+        padding: 10px 20px;
+      }
+
+      #answer {
+        padding: 30px 0px;
+      }
+
+      #answer #showAnswer {
+        font-family: 'Indie Flower', cursive;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      #hint {
+        font-family: 'Dosis', sans-serif;
+        font-size: 20px;
+      }
+
+      #hint #more {
+        margin-top: 10px;
+        display: none;
+      }
+
+      #hint table {
+        border: 1px solid black;
+        text-align: center;
+      }
+      #hint table, tr, th, td {
+        padding: 10px;
+        border-bottom: 1px solid blue;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="hint">
+      <div id="bar" onclick="hideme();">
+        <a href="#" style="text-decoration: none; color: red;">Hint</a>
+      </div>
+      <div id="more">
+        <table>
+          <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>A XOR B</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="question" class="clear">
+      <h1>What is the output?</h1>
+      <p id="qus">1&nbsp;&nbsp;XOR&nbsp;&nbsp;1&nbsp;&nbsp;=&nbsp;&nbsp;?</p>
+      <input type="text" id="answer" placeholder="Type your answer"/>
+    </div>
+
+    <div id="btn">
+      <button id='submit' type="button" name="button" onclick="checkResult();">Submit</button>
+    </div>
+    <div id="answer">
+      <div id="showAnswer"></div>
+    </div>
+
+
+  <script type="text/javascript">
+    function checkResult() {
+      var answer = document.getElementById('answer').value;
+      answer = parseInt(answer);
+      if(answer == 0) {
+        document.getElementById('showAnswer').style.color = 'green';
+        document.getElementById('showAnswer').innerHTML = "Correct!";
+      } else if(answer == 1) {
+        document.getElementById('showAnswer').style.color = 'red';
+        document.getElementById('showAnswer').innerHTML = "Wrong!";
+      } else {
+        document.getElementById('showAnswer').style.color = 'red';
+        document.getElementById('showAnswer').innerHTML = "Boolean input plz!";
+      }
+    }
+
+    var toggle = 1;
+
+    function hideme() {
+      if( toggle == 1 ) {
+        document.getElementById('more').style.display = 'inline';
+        toggle = 0;
+      } else if ( toggle == 0 ) {
+        document.getElementById('more').style.display = 'none';
+        toggle = 1;
+      }
+
+    }
+
+  </script>
+  </body>
+</html>
